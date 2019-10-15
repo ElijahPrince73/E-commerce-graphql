@@ -1,0 +1,45 @@
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  password: String!
+  cart: [Product!]!
+  orders: [Order]
+}
+
+type Product {
+  id: ID! @id
+  productName: String!
+  productDescription: String!
+  price: Int!
+  images: [Image!]! @relation(link: INLINE)
+  sku: String!
+  category: Category! @relation(link: INLINE)
+  inCart: [User]! @relation(link: INLINE)
+}
+
+type Order {
+  id: ID! @id
+  productList: [Product!]! @relation(link: INLINE)
+  email: String!
+  address: String!
+  address2: String
+  zip: String!
+  totalAmount: Int!
+  orderInt: Int!
+  items: Int!
+  orderedBy: [User] @relation(link: INLINE)
+}
+
+type Image {
+  id: ID! @id
+  alt: String!
+}
+
+type Category {
+  id: ID! @id
+  categoryName: String!
+  categoryDescription: String!
+  productList: [Product!]!
+  image: String!
+}
