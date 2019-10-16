@@ -1,0 +1,64 @@
+type Query {
+  products: [Product!]!
+  categories: [Category!]!
+  userInfo: User!
+  productsOfCategory(productName: String!): [Product!]!
+}
+
+type Mutation {
+  addToCart(productId: ID!): Product!
+  deleteFromCart(productId: ID!): Product!
+  signup(email: String, password: String!, name: String!): AuthPayload
+  login(email: String, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  cart: [Product!]!
+  orders: [Order]
+}
+
+type Product {
+  id: ID!
+  productName: String!
+  productDescription: String!
+  price: Int!
+  images: [Image!]!
+  sku: String!
+  category: Category!
+  inCart: [User]!
+}
+
+type Order {
+  id: ID!
+  productList: [Product!]!
+  email: String!
+  address: String!
+  address2: String
+  zip: String!
+  totalAmount: Int!
+  orderInt: Int!
+  items: Int!
+  orderedBy: [User!]!
+}
+
+type Image {
+  id: ID!
+  alt: String!
+}
+
+type Category {
+  id: ID!
+  categoryName: String!
+  categoryDescription: String!
+  productList: [Product!]!
+  image: String!
+}
