@@ -438,24 +438,7 @@ input OrderCreateInput {
   totalAmount: Int!
   orderInt: Int!
   items: Int!
-  orderedBy: UserCreateManyWithoutOrdersInput
-}
-
-input OrderCreateManyWithoutOrderedByInput {
-  create: [OrderCreateWithoutOrderedByInput!]
-  connect: [OrderWhereUniqueInput!]
-}
-
-input OrderCreateWithoutOrderedByInput {
-  id: ID
-  productList: ProductCreateManyInput
-  email: String!
-  address: String!
-  address2: String
-  zip: String!
-  totalAmount: Int!
-  orderInt: Int!
-  items: Int!
+  orderedBy: UserCreateManyInput
 }
 
 type OrderEdge {
@@ -493,106 +476,6 @@ type OrderPreviousValues {
   items: Int!
 }
 
-input OrderScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  address: String
-  address_not: String
-  address_in: [String!]
-  address_not_in: [String!]
-  address_lt: String
-  address_lte: String
-  address_gt: String
-  address_gte: String
-  address_contains: String
-  address_not_contains: String
-  address_starts_with: String
-  address_not_starts_with: String
-  address_ends_with: String
-  address_not_ends_with: String
-  address2: String
-  address2_not: String
-  address2_in: [String!]
-  address2_not_in: [String!]
-  address2_lt: String
-  address2_lte: String
-  address2_gt: String
-  address2_gte: String
-  address2_contains: String
-  address2_not_contains: String
-  address2_starts_with: String
-  address2_not_starts_with: String
-  address2_ends_with: String
-  address2_not_ends_with: String
-  zip: String
-  zip_not: String
-  zip_in: [String!]
-  zip_not_in: [String!]
-  zip_lt: String
-  zip_lte: String
-  zip_gt: String
-  zip_gte: String
-  zip_contains: String
-  zip_not_contains: String
-  zip_starts_with: String
-  zip_not_starts_with: String
-  zip_ends_with: String
-  zip_not_ends_with: String
-  totalAmount: Int
-  totalAmount_not: Int
-  totalAmount_in: [Int!]
-  totalAmount_not_in: [Int!]
-  totalAmount_lt: Int
-  totalAmount_lte: Int
-  totalAmount_gt: Int
-  totalAmount_gte: Int
-  orderInt: Int
-  orderInt_not: Int
-  orderInt_in: [Int!]
-  orderInt_not_in: [Int!]
-  orderInt_lt: Int
-  orderInt_lte: Int
-  orderInt_gt: Int
-  orderInt_gte: Int
-  items: Int
-  items_not: Int
-  items_in: [Int!]
-  items_not_in: [Int!]
-  items_lt: Int
-  items_lte: Int
-  items_gt: Int
-  items_gte: Int
-  AND: [OrderScalarWhereInput!]
-  OR: [OrderScalarWhereInput!]
-  NOT: [OrderScalarWhereInput!]
-}
-
 type OrderSubscriptionPayload {
   mutation: MutationType!
   node: Order
@@ -618,17 +501,7 @@ input OrderUpdateInput {
   totalAmount: Int
   orderInt: Int
   items: Int
-  orderedBy: UserUpdateManyWithoutOrdersInput
-}
-
-input OrderUpdateManyDataInput {
-  email: String
-  address: String
-  address2: String
-  zip: String
-  totalAmount: Int
-  orderInt: Int
-  items: Int
+  orderedBy: UserUpdateManyInput
 }
 
 input OrderUpdateManyMutationInput {
@@ -639,45 +512,6 @@ input OrderUpdateManyMutationInput {
   totalAmount: Int
   orderInt: Int
   items: Int
-}
-
-input OrderUpdateManyWithoutOrderedByInput {
-  create: [OrderCreateWithoutOrderedByInput!]
-  delete: [OrderWhereUniqueInput!]
-  connect: [OrderWhereUniqueInput!]
-  set: [OrderWhereUniqueInput!]
-  disconnect: [OrderWhereUniqueInput!]
-  update: [OrderUpdateWithWhereUniqueWithoutOrderedByInput!]
-  upsert: [OrderUpsertWithWhereUniqueWithoutOrderedByInput!]
-  deleteMany: [OrderScalarWhereInput!]
-  updateMany: [OrderUpdateManyWithWhereNestedInput!]
-}
-
-input OrderUpdateManyWithWhereNestedInput {
-  where: OrderScalarWhereInput!
-  data: OrderUpdateManyDataInput!
-}
-
-input OrderUpdateWithoutOrderedByDataInput {
-  productList: ProductUpdateManyInput
-  email: String
-  address: String
-  address2: String
-  zip: String
-  totalAmount: Int
-  orderInt: Int
-  items: Int
-}
-
-input OrderUpdateWithWhereUniqueWithoutOrderedByInput {
-  where: OrderWhereUniqueInput!
-  data: OrderUpdateWithoutOrderedByDataInput!
-}
-
-input OrderUpsertWithWhereUniqueWithoutOrderedByInput {
-  where: OrderWhereUniqueInput!
-  update: OrderUpdateWithoutOrderedByDataInput!
-  create: OrderCreateWithoutOrderedByInput!
 }
 
 input OrderWhereInput {
@@ -816,7 +650,7 @@ input ProductCreateInput {
   images: ImageCreateManyInput
   sku: String!
   category: CategoryCreateOneWithoutProductListInput!
-  inCart: UserCreateManyWithoutCartInput
+  inCart: UserCreateManyInput
 }
 
 input ProductCreateManyInput {
@@ -829,11 +663,6 @@ input ProductCreateManyWithoutCategoryInput {
   connect: [ProductWhereUniqueInput!]
 }
 
-input ProductCreateManyWithoutInCartInput {
-  create: [ProductCreateWithoutInCartInput!]
-  connect: [ProductWhereUniqueInput!]
-}
-
 input ProductCreateWithoutCategoryInput {
   id: ID
   productName: String!
@@ -841,17 +670,7 @@ input ProductCreateWithoutCategoryInput {
   price: Int!
   images: ImageCreateManyInput
   sku: String!
-  inCart: UserCreateManyWithoutCartInput
-}
-
-input ProductCreateWithoutInCartInput {
-  id: ID
-  productName: String!
-  productDescription: String!
-  price: Int!
-  images: ImageCreateManyInput
-  sku: String!
-  category: CategoryCreateOneWithoutProductListInput!
+  inCart: UserCreateManyInput
 }
 
 type ProductEdge {
@@ -973,7 +792,7 @@ input ProductUpdateDataInput {
   images: ImageUpdateManyInput
   sku: String
   category: CategoryUpdateOneRequiredWithoutProductListInput
-  inCart: UserUpdateManyWithoutCartInput
+  inCart: UserUpdateManyInput
 }
 
 input ProductUpdateInput {
@@ -983,7 +802,7 @@ input ProductUpdateInput {
   images: ImageUpdateManyInput
   sku: String
   category: CategoryUpdateOneRequiredWithoutProductListInput
-  inCart: UserUpdateManyWithoutCartInput
+  inCart: UserUpdateManyInput
 }
 
 input ProductUpdateManyDataInput {
@@ -1024,18 +843,6 @@ input ProductUpdateManyWithoutCategoryInput {
   updateMany: [ProductUpdateManyWithWhereNestedInput!]
 }
 
-input ProductUpdateManyWithoutInCartInput {
-  create: [ProductCreateWithoutInCartInput!]
-  delete: [ProductWhereUniqueInput!]
-  connect: [ProductWhereUniqueInput!]
-  set: [ProductWhereUniqueInput!]
-  disconnect: [ProductWhereUniqueInput!]
-  update: [ProductUpdateWithWhereUniqueWithoutInCartInput!]
-  upsert: [ProductUpsertWithWhereUniqueWithoutInCartInput!]
-  deleteMany: [ProductScalarWhereInput!]
-  updateMany: [ProductUpdateManyWithWhereNestedInput!]
-}
-
 input ProductUpdateManyWithWhereNestedInput {
   where: ProductScalarWhereInput!
   data: ProductUpdateManyDataInput!
@@ -1047,16 +854,7 @@ input ProductUpdateWithoutCategoryDataInput {
   price: Int
   images: ImageUpdateManyInput
   sku: String
-  inCart: UserUpdateManyWithoutCartInput
-}
-
-input ProductUpdateWithoutInCartDataInput {
-  productName: String
-  productDescription: String
-  price: Int
-  images: ImageUpdateManyInput
-  sku: String
-  category: CategoryUpdateOneRequiredWithoutProductListInput
+  inCart: UserUpdateManyInput
 }
 
 input ProductUpdateWithWhereUniqueNestedInput {
@@ -1069,11 +867,6 @@ input ProductUpdateWithWhereUniqueWithoutCategoryInput {
   data: ProductUpdateWithoutCategoryDataInput!
 }
 
-input ProductUpdateWithWhereUniqueWithoutInCartInput {
-  where: ProductWhereUniqueInput!
-  data: ProductUpdateWithoutInCartDataInput!
-}
-
 input ProductUpsertWithWhereUniqueNestedInput {
   where: ProductWhereUniqueInput!
   update: ProductUpdateDataInput!
@@ -1084,12 +877,6 @@ input ProductUpsertWithWhereUniqueWithoutCategoryInput {
   where: ProductWhereUniqueInput!
   update: ProductUpdateWithoutCategoryDataInput!
   create: ProductCreateWithoutCategoryInput!
-}
-
-input ProductUpsertWithWhereUniqueWithoutInCartInput {
-  where: ProductWhereUniqueInput!
-  update: ProductUpdateWithoutInCartDataInput!
-  create: ProductCreateWithoutInCartInput!
 }
 
 input ProductWhereInput {
@@ -1196,11 +983,8 @@ type Subscription {
 
 type User {
   id: ID!
-  name: String!
   email: String!
   password: String!
-  cart(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product!]
-  orders(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Order!]
 }
 
 type UserConnection {
@@ -1211,37 +995,13 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  name: String!
   email: String!
   password: String!
-  cart: ProductCreateManyWithoutInCartInput
-  orders: OrderCreateManyWithoutOrderedByInput
 }
 
-input UserCreateManyWithoutCartInput {
-  create: [UserCreateWithoutCartInput!]
+input UserCreateManyInput {
+  create: [UserCreateInput!]
   connect: [UserWhereUniqueInput!]
-}
-
-input UserCreateManyWithoutOrdersInput {
-  create: [UserCreateWithoutOrdersInput!]
-  connect: [UserWhereUniqueInput!]
-}
-
-input UserCreateWithoutCartInput {
-  id: ID
-  name: String!
-  email: String!
-  password: String!
-  orders: OrderCreateManyWithoutOrderedByInput
-}
-
-input UserCreateWithoutOrdersInput {
-  id: ID
-  name: String!
-  email: String!
-  password: String!
-  cart: ProductCreateManyWithoutInCartInput
 }
 
 type UserEdge {
@@ -1252,8 +1012,6 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
   email_ASC
   email_DESC
   password_ASC
@@ -1262,7 +1020,6 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  name: String!
   email: String!
   password: String!
 }
@@ -1282,20 +1039,6 @@ input UserScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
@@ -1345,48 +1088,36 @@ input UserSubscriptionWhereInput {
   AND: [UserSubscriptionWhereInput!]
 }
 
-input UserUpdateInput {
-  name: String
+input UserUpdateDataInput {
   email: String
   password: String
-  cart: ProductUpdateManyWithoutInCartInput
-  orders: OrderUpdateManyWithoutOrderedByInput
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
 }
 
 input UserUpdateManyDataInput {
-  name: String
   email: String
   password: String
+}
+
+input UserUpdateManyInput {
+  create: [UserCreateInput!]
+  update: [UserUpdateWithWhereUniqueNestedInput!]
+  upsert: [UserUpsertWithWhereUniqueNestedInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
 }
 
 input UserUpdateManyMutationInput {
-  name: String
   email: String
   password: String
-}
-
-input UserUpdateManyWithoutCartInput {
-  create: [UserCreateWithoutCartInput!]
-  delete: [UserWhereUniqueInput!]
-  connect: [UserWhereUniqueInput!]
-  set: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  update: [UserUpdateWithWhereUniqueWithoutCartInput!]
-  upsert: [UserUpsertWithWhereUniqueWithoutCartInput!]
-  deleteMany: [UserScalarWhereInput!]
-  updateMany: [UserUpdateManyWithWhereNestedInput!]
-}
-
-input UserUpdateManyWithoutOrdersInput {
-  create: [UserCreateWithoutOrdersInput!]
-  delete: [UserWhereUniqueInput!]
-  connect: [UserWhereUniqueInput!]
-  set: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  update: [UserUpdateWithWhereUniqueWithoutOrdersInput!]
-  upsert: [UserUpsertWithWhereUniqueWithoutOrdersInput!]
-  deleteMany: [UserScalarWhereInput!]
-  updateMany: [UserUpdateManyWithWhereNestedInput!]
 }
 
 input UserUpdateManyWithWhereNestedInput {
@@ -1394,40 +1125,15 @@ input UserUpdateManyWithWhereNestedInput {
   data: UserUpdateManyDataInput!
 }
 
-input UserUpdateWithoutCartDataInput {
-  name: String
-  email: String
-  password: String
-  orders: OrderUpdateManyWithoutOrderedByInput
-}
-
-input UserUpdateWithoutOrdersDataInput {
-  name: String
-  email: String
-  password: String
-  cart: ProductUpdateManyWithoutInCartInput
-}
-
-input UserUpdateWithWhereUniqueWithoutCartInput {
+input UserUpdateWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput!
-  data: UserUpdateWithoutCartDataInput!
+  data: UserUpdateDataInput!
 }
 
-input UserUpdateWithWhereUniqueWithoutOrdersInput {
+input UserUpsertWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput!
-  data: UserUpdateWithoutOrdersDataInput!
-}
-
-input UserUpsertWithWhereUniqueWithoutCartInput {
-  where: UserWhereUniqueInput!
-  update: UserUpdateWithoutCartDataInput!
-  create: UserCreateWithoutCartInput!
-}
-
-input UserUpsertWithWhereUniqueWithoutOrdersInput {
-  where: UserWhereUniqueInput!
-  update: UserUpdateWithoutOrdersDataInput!
-  create: UserCreateWithoutOrdersInput!
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserWhereInput {
@@ -1445,20 +1151,6 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
@@ -1487,8 +1179,6 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
-  cart_some: ProductWhereInput
-  orders_some: OrderWhereInput
   AND: [UserWhereInput!]
 }
 
