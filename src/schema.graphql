@@ -1,15 +1,16 @@
 type Query {
-  products: [Product!]!
-  categories: [Category!]!
-  userInfo: User!
-  productsOfCategory(productName: String!): [Product!]!
+  products: [Product!]
+  categories: [Category!]
+  userInfo(id: String!): User
+  productsOfCategory(productName: String!): [Product!]
+  cart(userId: String!): Cart
 }
 
 type Mutation {
-  addToCart(productId: ID!): Product!
+  addToCart(productId: ID!): User!
   deleteFromCart(productId: ID!): Product!
-  signup(email: String!, password: String!): AuthPayload
-  login(email: String, password: String!): AuthPayload
+  signup(name: String!, email: String!, password: String!): AuthPayload
+  login(name: String!, email: String, password: String!): AuthPayload
 }
 
 type AuthPayload {
@@ -18,12 +19,15 @@ type AuthPayload {
 }
 
 type User {
+  id: ID
+  name: String
+  email: String
+}
+
+type Cart {
   id: ID!
-  name: String!
-  email: String!
-  password: String!
-  cart: [Product!]!
-  orders: [Order]
+  userId: User
+  items: [Product!]
 }
 
 type Product {

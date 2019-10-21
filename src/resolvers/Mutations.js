@@ -38,7 +38,14 @@ const login = async (parent, args, ctx, info) => {
   };
 };
 
+const addToCart = async (parent, { cartId }, ctx, info) => {
+  const cart = await ctx.prisma.cart({ id: cartId })
+
+  console.log(cart);
+}
+
 module.exports = {
   signup,
-  login
+  login,
+  addToCart
 };

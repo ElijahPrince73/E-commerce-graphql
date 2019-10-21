@@ -10,7 +10,6 @@ const userInfo = async (root, args, ctx) => {
   return ctx.prisma.user({ id: args.id });
 }
 
-
 const productsOfCategory = async (root, args, ctx) => {
   return ctx.prisma
     .categories({ categoryName: args.categoryName })

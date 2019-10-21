@@ -4,6 +4,12 @@ type User {
   password: String!
 }
 
+type Cart {
+  id: ID! @id
+  userId: ID! @id
+  items: [Product!] @relation(link: INLINE)
+}
+
 type Product {
   id: ID! @id
   productName: String!
