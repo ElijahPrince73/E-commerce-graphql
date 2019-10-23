@@ -2,10 +2,14 @@ import { GraphQLServer } from "graphql-yoga"
 import { prisma } from './generated/prisma-client'
 import Query from './resolvers/Query'
 import Mutation from './resolvers/Mutations'
+import User from './resolvers/User'
+import Cart from './resolvers/Cart'
 
 const resolvers = {
   Query,
-  Mutation
+  Mutation,
+  User,
+  Cart
 };
 
 const server = new GraphQLServer({

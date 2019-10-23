@@ -38,10 +38,25 @@ const login = async (parent, args, ctx, info) => {
   };
 };
 
-const addToCart = async (parent, { cartId }, ctx, info) => {
-  const cart = await ctx.prisma.cart({ id: cartId })
+const addToCart = async (parent, { userId, productId }, ctx, info) => {
+  let cart = await ctx.prisma.user({ id: userId }).cart()
 
-  console.log(cart);
+  if (cart === null) {
+    cart = await ctx.prisma.createCart({
+      user: {
+        connect: {
+          id: userId
+        }
+      },
+      items: {
+        connect: {
+          id: productId
+        }
+      }
+    });
+  }
+
+  return cart
 }
 
 module.exports = {

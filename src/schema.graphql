@@ -7,10 +7,10 @@ type Query {
 }
 
 type Mutation {
-  addToCart(productId: ID!): User!
+  addToCart(userId: ID!, productId: ID!): Cart
   deleteFromCart(productId: ID!): Product!
-  signup(name: String!, email: String!, password: String!): AuthPayload
-  login(name: String!, email: String, password: String!): AuthPayload
+  signup(email: String!, password: String!): AuthPayload
+  login(email: String, password: String!): AuthPayload
 }
 
 type AuthPayload {
@@ -19,15 +19,16 @@ type AuthPayload {
 }
 
 type User {
-  id: ID
-  name: String
-  email: String
+  id: ID!
+  email: String! 
+  cart: Cart
+  orders: [Order]
 }
 
 type Cart {
   id: ID!
-  userId: User
-  items: [Product!]
+  user: User
+  items: [Product!]!
 }
 
 type Product {

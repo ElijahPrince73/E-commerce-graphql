@@ -2,23 +2,24 @@ type User {
   id: ID! @id
   email: String! @unique
   password: String!
+  cart: Cart
+  orders: [Order]
 }
 
 type Cart {
   id: ID! @id
-  userId: ID! @id
-  items: [Product!] @relation(link: INLINE)
+  user: User @relation(link: INLINE)
+  items: [Product!]! @relation(link: INLINE)
 }
 
 type Product {
   id: ID! @id
   productName: String!
   productDescription: String!
-  price: Int!
-  images: [Image!]! @relation(link: INLINE)
-  sku: String!
-  category: Category! @relation(link: INLINE)
-  inCart: [User]! @relation(link: INLINE)
+  price: Int
+  images: [Image!] @relation(link: INLINE)
+  sku: String
+  category: Category @relation(link: INLINE)
 }
 
 type Order {
@@ -36,7 +37,7 @@ type Order {
 
 type Image {
   id: ID! @id
-  alt: String!
+  alt: String
 }
 
 type Category {
