@@ -139,9 +139,9 @@ input CartWhereUniqueInput {
 type Category {
   id: ID!
   categoryName: String!
-  categoryDescription: String!
+  categoryDescription: String
   productList(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product!]
-  image: String!
+  image: String
 }
 
 type CategoryConnection {
@@ -153,9 +153,9 @@ type CategoryConnection {
 input CategoryCreateInput {
   id: ID
   categoryName: String!
-  categoryDescription: String!
+  categoryDescription: String
   productList: ProductCreateManyWithoutCategoryInput
-  image: String!
+  image: String
 }
 
 input CategoryCreateOneWithoutProductListInput {
@@ -166,8 +166,8 @@ input CategoryCreateOneWithoutProductListInput {
 input CategoryCreateWithoutProductListInput {
   id: ID
   categoryName: String!
-  categoryDescription: String!
-  image: String!
+  categoryDescription: String
+  image: String
 }
 
 type CategoryEdge {
@@ -189,8 +189,8 @@ enum CategoryOrderByInput {
 type CategoryPreviousValues {
   id: ID!
   categoryName: String!
-  categoryDescription: String!
-  image: String!
+  categoryDescription: String
+  image: String
 }
 
 type CategorySubscriptionPayload {
@@ -310,6 +310,7 @@ input CategoryWhereUniqueInput {
 type Image {
   id: ID!
   alt: String
+  url: String!
 }
 
 type ImageConnection {
@@ -321,6 +322,7 @@ type ImageConnection {
 input ImageCreateInput {
   id: ID
   alt: String
+  url: String!
 }
 
 input ImageCreateManyInput {
@@ -338,11 +340,14 @@ enum ImageOrderByInput {
   id_DESC
   alt_ASC
   alt_DESC
+  url_ASC
+  url_DESC
 }
 
 type ImagePreviousValues {
   id: ID!
   alt: String
+  url: String!
 }
 
 input ImageScalarWhereInput {
@@ -374,6 +379,20 @@ input ImageScalarWhereInput {
   alt_not_starts_with: String
   alt_ends_with: String
   alt_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
   AND: [ImageScalarWhereInput!]
   OR: [ImageScalarWhereInput!]
   NOT: [ImageScalarWhereInput!]
@@ -397,14 +416,17 @@ input ImageSubscriptionWhereInput {
 
 input ImageUpdateDataInput {
   alt: String
+  url: String
 }
 
 input ImageUpdateInput {
   alt: String
+  url: String
 }
 
 input ImageUpdateManyDataInput {
   alt: String
+  url: String
 }
 
 input ImageUpdateManyInput {
@@ -421,6 +443,7 @@ input ImageUpdateManyInput {
 
 input ImageUpdateManyMutationInput {
   alt: String
+  url: String
 }
 
 input ImageUpdateManyWithWhereNestedInput {
@@ -468,6 +491,20 @@ input ImageWhereInput {
   alt_not_starts_with: String
   alt_ends_with: String
   alt_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
   AND: [ImageWhereInput!]
 }
 
@@ -910,7 +947,7 @@ type PageInfo {
 type Product {
   id: ID!
   productName: String!
-  productDescription: String!
+  productDescription: String
   price: Int
   images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image!]
   sku: String
@@ -926,7 +963,7 @@ type ProductConnection {
 input ProductCreateInput {
   id: ID
   productName: String!
-  productDescription: String!
+  productDescription: String
   price: Int
   images: ImageCreateManyInput
   sku: String
@@ -946,7 +983,7 @@ input ProductCreateManyWithoutCategoryInput {
 input ProductCreateWithoutCategoryInput {
   id: ID
   productName: String!
-  productDescription: String!
+  productDescription: String
   price: Int
   images: ImageCreateManyInput
   sku: String
@@ -973,7 +1010,7 @@ enum ProductOrderByInput {
 type ProductPreviousValues {
   id: ID!
   productName: String!
-  productDescription: String!
+  productDescription: String
   price: Int
   sku: String
 }

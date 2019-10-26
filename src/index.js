@@ -4,12 +4,14 @@ import Query from './resolvers/Query'
 import Mutation from './resolvers/Mutations'
 import User from './resolvers/User'
 import Cart from './resolvers/Cart'
+import Category from "./resolvers/Category";
 
 const resolvers = {
   Query,
   Mutation,
   User,
-  Cart
+  Cart,
+  Category
 };
 
 const server = new GraphQLServer({

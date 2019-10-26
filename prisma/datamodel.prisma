@@ -9,13 +9,13 @@ type User {
 type Cart {
   id: ID! @id
   user: User @relation(link: INLINE)
-  items: [Product!]! @relation(link: INLINE)
+  items: [Product!] @relation(link: INLINE)
 }
 
 type Product {
   id: ID! @id
   productName: String!
-  productDescription: String!
+  productDescription: String
   price: Int
   images: [Image!] @relation(link: INLINE)
   sku: String
@@ -38,12 +38,13 @@ type Order {
 type Image {
   id: ID! @id
   alt: String
+  url: String!
 }
 
 type Category {
   id: ID! @id
   categoryName: String!
-  categoryDescription: String!
-  productList: [Product!]!
-  image: String!
+  categoryDescription: String
+  productList: [Product!]
+  image: String
 }

@@ -322,7 +322,13 @@ export type ProductOrderByInput =
   | "sku_ASC"
   | "sku_DESC";
 
-export type ImageOrderByInput = "id_ASC" | "id_DESC" | "alt_ASC" | "alt_DESC";
+export type ImageOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "alt_ASC"
+  | "alt_DESC"
+  | "url_ASC"
+  | "url_DESC";
 
 export type UserOrderByInput =
   | "id_ASC"
@@ -348,6 +354,7 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface ImageUpdateDataInput {
   alt?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export type CartWhereUniqueInput = AtLeastOne<{
@@ -453,10 +460,12 @@ export interface CartWhereInput {
 export interface ImageCreateInput {
   id?: Maybe<ID_Input>;
   alt?: Maybe<String>;
+  url: String;
 }
 
 export interface ImageUpdateInput {
   alt?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export interface CategoryCreateOneWithoutProductListInput {
@@ -472,8 +481,8 @@ export interface CategoryUpsertWithoutProductListInput {
 export interface CategoryCreateWithoutProductListInput {
   id?: Maybe<ID_Input>;
   categoryName: String;
-  categoryDescription: String;
-  image: String;
+  categoryDescription?: Maybe<String>;
+  image?: Maybe<String>;
 }
 
 export interface ProductWhereInput {
@@ -809,6 +818,20 @@ export interface ImageScalarWhereInput {
   alt_not_starts_with?: Maybe<String>;
   alt_ends_with?: Maybe<String>;
   alt_not_ends_with?: Maybe<String>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
   AND?: Maybe<ImageScalarWhereInput[] | ImageScalarWhereInput>;
   OR?: Maybe<ImageScalarWhereInput[] | ImageScalarWhereInput>;
   NOT?: Maybe<ImageScalarWhereInput[] | ImageScalarWhereInput>;
@@ -838,6 +861,7 @@ export interface CartCreateOneWithoutUserInput {
 
 export interface ImageUpdateManyDataInput {
   alt?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export interface CartCreateInput {
@@ -930,6 +954,20 @@ export interface ImageWhereInput {
   alt_not_starts_with?: Maybe<String>;
   alt_ends_with?: Maybe<String>;
   alt_not_ends_with?: Maybe<String>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
   AND?: Maybe<ImageWhereInput[] | ImageWhereInput>;
 }
 
@@ -953,7 +991,7 @@ export interface UserCreateManyWithoutOrdersInput {
 export interface ProductCreateInput {
   id?: Maybe<ID_Input>;
   productName: String;
-  productDescription: String;
+  productDescription?: Maybe<String>;
   price?: Maybe<Int>;
   images?: Maybe<ImageCreateManyInput>;
   sku?: Maybe<String>;
@@ -1339,6 +1377,7 @@ export interface ImageCreateManyInput {
 
 export interface ImageUpdateManyMutationInput {
   alt?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export interface CategorySubscriptionWhereInput {
@@ -1355,9 +1394,9 @@ export interface CategorySubscriptionWhereInput {
 export interface CategoryCreateInput {
   id?: Maybe<ID_Input>;
   categoryName: String;
-  categoryDescription: String;
+  categoryDescription?: Maybe<String>;
   productList?: Maybe<ProductCreateManyWithoutCategoryInput>;
-  image: String;
+  image?: Maybe<String>;
 }
 
 export interface OrderUpdateManyMutationInput {
@@ -1384,7 +1423,7 @@ export interface CartUpdateWithoutUserDataInput {
 export interface ProductCreateWithoutCategoryInput {
   id?: Maybe<ID_Input>;
   productName: String;
-  productDescription: String;
+  productDescription?: Maybe<String>;
   price?: Maybe<Int>;
   images?: Maybe<ImageCreateManyInput>;
   sku?: Maybe<String>;
@@ -1694,7 +1733,7 @@ export interface BatchPayloadSubscription
 export interface ProductPreviousValues {
   id: ID_Output;
   productName: String;
-  productDescription: String;
+  productDescription?: String;
   price?: Int;
   sku?: String;
 }
@@ -2034,8 +2073,8 @@ export interface CategoryEdgeSubscription
 export interface CategoryPreviousValues {
   id: ID_Output;
   categoryName: String;
-  categoryDescription: String;
-  image: String;
+  categoryDescription?: String;
+  image?: String;
 }
 
 export interface CategoryPreviousValuesPromise
@@ -2117,7 +2156,7 @@ export interface UserNullablePromise
 export interface Product {
   id: ID_Output;
   productName: String;
-  productDescription: String;
+  productDescription?: String;
   price?: Int;
   sku?: String;
 }
@@ -2241,6 +2280,7 @@ export interface ProductEdgeSubscription
 export interface ImagePreviousValues {
   id: ID_Output;
   alt?: String;
+  url: String;
 }
 
 export interface ImagePreviousValuesPromise
@@ -2248,6 +2288,7 @@ export interface ImagePreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   alt: () => Promise<String>;
+  url: () => Promise<String>;
 }
 
 export interface ImagePreviousValuesSubscription
@@ -2255,6 +2296,7 @@ export interface ImagePreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   alt: () => Promise<AsyncIterator<String>>;
+  url: () => Promise<AsyncIterator<String>>;
 }
 
 export interface OrderConnection {
@@ -2281,8 +2323,8 @@ export interface OrderConnectionSubscription
 export interface Category {
   id: ID_Output;
   categoryName: String;
-  categoryDescription: String;
-  image: String;
+  categoryDescription?: String;
+  image?: String;
 }
 
 export interface CategoryPromise extends Promise<Category>, Fragmentable {
@@ -2381,11 +2423,13 @@ export interface ProductSubscriptionPayloadSubscription
 export interface Image {
   id: ID_Output;
   alt?: String;
+  url: String;
 }
 
 export interface ImagePromise extends Promise<Image>, Fragmentable {
   id: () => Promise<ID_Output>;
   alt: () => Promise<String>;
+  url: () => Promise<String>;
 }
 
 export interface ImageSubscription
@@ -2393,6 +2437,7 @@ export interface ImageSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   alt: () => Promise<AsyncIterator<String>>;
+  url: () => Promise<AsyncIterator<String>>;
 }
 
 export interface ImageNullablePromise
@@ -2400,6 +2445,7 @@ export interface ImageNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   alt: () => Promise<String>;
+  url: () => Promise<String>;
 }
 
 export interface OrderPreviousValues {

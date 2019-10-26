@@ -2,7 +2,6 @@ type Query {
   products: [Product!]
   categories: [Category!]
   userInfo(id: String!): User
-  productsOfCategory(productName: String!): [Product!]
   cart(userId: String!): Cart
 }
 
