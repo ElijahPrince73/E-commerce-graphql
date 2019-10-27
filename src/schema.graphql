@@ -1,13 +1,13 @@
 type Query {
-  products: [Product!]
+  products(search: String): [Product!]
   categories: [Category!]
   userInfo(id: String!): User
-  cart(userId: String!): Cart
 }
 
 type Mutation {
-  addToCart(userId: ID!, productId: ID!): Cart
-  deleteFromCart(productId: ID!): Product!
+  addToCart(userId: String, productId: ID!): Cart
+  deleteItemFromCart(userId: String!, productId: String!): Cart
+  checkout(userId: String): User
   signup(email: String!, password: String!): AuthPayload
   login(email: String, password: String!): AuthPayload
 }
