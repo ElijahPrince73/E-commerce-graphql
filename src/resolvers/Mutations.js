@@ -47,7 +47,7 @@ const addToCart = async (parent, { userId, productId }, ctx, info) => {
         connect: {
           id: userId
         }
-      },=
+      },
       items: {
         connect: {
           id: productId
