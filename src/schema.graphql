@@ -56,7 +56,8 @@ type Order {
 
 type Image {
   id: ID!
-  alt: String!
+  alt: String
+  url: String!
 }
 
 type Category {

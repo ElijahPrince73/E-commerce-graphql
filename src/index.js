@@ -1,17 +1,19 @@
-import { GraphQLServer } from "graphql-yoga"
+import { GraphQLServer } from 'graphql-yoga'
 import { prisma } from './generated/prisma-client'
 import Query from './resolvers/Query'
 import Mutation from './resolvers/Mutations'
 import User from './resolvers/User'
 import Cart from './resolvers/Cart'
-import Category from "./resolvers/Category";
+import Category from './resolvers/Category';
+import Product from './resolvers/Product'
 
 const resolvers = {
   Query,
   Mutation,
   User,
   Cart,
-  Category
+  Category,
+  Product
 };
 
 const server = new GraphQLServer({
